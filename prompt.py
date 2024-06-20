@@ -14,7 +14,9 @@ from langchain_community.callbacks import get_openai_callback
 from langchain_community.document_loaders import SeleniumURLLoader
 from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import PromptTemplate
-from langchain_community.chat_models import OpenAIEmbeddings, ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
+from langchain_community.embeddings import OpenAIEmbeddings
+
 from langchain_text_splitters import CharacterTextSplitter
 
 def prompt1run(selected_df, api_key, prompt1, input_variables):
