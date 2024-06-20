@@ -22,23 +22,26 @@ tab1_prompt, tab2_df, tab3_stats  = st.tabs(["Prompt", "Run", "Statistics"])
 with tab1_prompt:
     st.warning("""In your prompt, please ensure that:\n 1. The input features are encapsulated within a pair of curly brackets (e.g. {country}) \n 2. The input features within the curly brackets are not empty, and must match its corresponding column name in the dataset as shown in the "Run" tab (e.g. {website_content})""", icon="⚠️")
     st.markdown("\n\n")
-    default_prompt = '''You are advising a venture capital investor focusing on Series A start-ups. You will be given a set of information and statistics a tech start-up. Your task is to assess the likelihood that this company exhibits breakthrough signals, which makes it a good investment target to recommend to the investor. You will give:
+    default_prompt = '''"You are advising a venture capital investor focusing on Series A start-ups. You will be given a set of information and statistics about a company, which is a tech start-up. Your task is to assess the likelihood that this company exhibits breakthrough signals, which makes it a good investment target to recommend to the investor. You will give:
 - A likelihood score that the company exhibits breakthrough signals, ranging from 0 (for no likelihood) to 100 (maximum likelihood).
 - A detailed reason for giving this score in seven bullet points, quoting relevant statistics and evidence. Every bullet point must correspond to each criterion given below and must contain why it has or has not shown breakthrough signals for that particular criterion.
 Your output MUST be in JSON format as follows: {{"score" : <score>, "reason": "- <reason 1>\n...\n- <reason 7>"}}.
 
 You are given the following general information about the company:
- - Industries: {industry}
+ - Country: {country}
+ - Industries: {industries}
  - Description: {description}
- 
+
 If there is no information given for a criteria, then it does not show breakthrough potential. Carefully analyse the information given and determine whether the company described has made a breakthrough based on the following criteria:
 
 1. Number of employees: If the company has been hiring more employees, with a significant increase over the recent period, it is more likely a breakthrough.
-- Employees time series: {employee_chart}
+- Employees time series: {employees_chart}
+- Employee percentage growth: {employee_percent_inc}
 - Current job openings: {job_openings}
 
 2. Web traffic: If the company website traffic has increased significantly over the recent period, it is more likely a breakthrough.
-- Website traffic time series: {website_traffic_estimates_chart}
+- Website traffic time series: {website_traffic}
+- Website traffic percentage growth: {website_traffic_percent_inc}
 
 3. Social media presence: If the company has a lot of followers on LinkedIn, it is gaining traction and is more likely a breakthrough.
 - LinkedIn followers: {followers}
