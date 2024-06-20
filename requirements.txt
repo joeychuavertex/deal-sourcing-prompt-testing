@@ -13,3 +13,4 @@ memory_profiler
 bs4
 selenium
 tiktoken
+langchain-openai
