@@ -89,7 +89,7 @@ try:
     part2_df = st.session_state['part2_df'] 
     part2_df = part2_df[:10] #if the selection of the companies gets wonky (e.g. keeps refreshing), probably because data is too big
 except AttributeError as e:
-    st.switch_page("Authentication.py")
+    st.switch_page("pages/Authentication.py")
 
 curly_cols = ["website_traffic_estimates_chart", "app_downloads_android_chart", "employee_range", "employee_chart", "patents", "news", "raised_rounds"]
 
@@ -153,7 +153,7 @@ if len(selected_df3) > 0 and run_method and st.button('Run'):
     if not api_key:
         st.error('Enter the API key in the Authentication page!', icon="🚨")
         time.sleep(3)
-        st.switch_page("Authentication.py")
+        st.switch_page("pages/Authentication.py")
     try:
         with st.spinner('Running...'):
             start = time.time()
@@ -200,7 +200,7 @@ if len(selected_df3) > 0 and run_method and st.button('Run'):
     except AuthenticationError as e:
         st.error('AuthenticationError: Please enter a valid API key at the Authentication page.', icon="🚨")
         time.sleep(3)
-        st.switch_page("Authentication.py")
+        st.switch_page("pages/Authentication.py")
     except SyntaxError as e:
         st.error("SyntaxError: Ensure that all {input features} in the prompt are entered correctly.", icon="🚨")
         time.sleep(5)
@@ -208,4 +208,4 @@ if len(selected_df3) > 0 and run_method and st.button('Run'):
     except NameError as e:
         st.error('NameError: Please enter a valid API key at the Authentication page.', icon="🚨")
         time.sleep(3)
-        st.switch_page("Authentication.py")
+        st.switch_page("pages/Authentication.py")

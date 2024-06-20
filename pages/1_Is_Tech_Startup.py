@@ -17,7 +17,7 @@ try:
     api_key = st.session_state['key'] if st.session_state.key else None
     part1_df = st.session_state['part1_df'] 
 except AttributeError as e:
-    st.switch_page("Authentication.py")
+    st.switch_page("pages/Authentication.py")
 
 st.markdown("# Is Tech Startup?")
 tab1_prompt, tab2_df = st.tabs(["Prompt", "Run"])
@@ -57,7 +57,7 @@ with tab2_df:
         if not api_key:
             st.error('Enter the API key in the Authentication page!', icon="🚨")
             time.sleep(3)
-            st.switch_page("Authentication.py")
+            st.switch_page("pages/Authentication.py")
         try:
             with st.spinner('Running...'):
                 start = time.time()
@@ -105,7 +105,7 @@ with tab2_df:
         except AuthenticationError as e:
             st.error('AuthenticationError: Please enter a valid API key at the Authentication page.', icon="🚨")
             time.sleep(3)
-            st.switch_page("Authentication.py")
+            st.switch_page("pages/Authentication.py")
         except ValueError as e:
             st.error("ValueError: Ensure that all {input features} in the prompt are identical to their corresponding column names in the dataframe and not empty!", icon="🚨")
             time.sleep(7)
@@ -121,7 +121,7 @@ with tab2_df:
         except NameError as e:
             st.error('NameError: Please enter a valid API key at the Authentication page.', icon="🚨")
             time.sleep(3)
-            st.switch_page("Authentication.py")
+            st.switch_page("pages/Authentication.py")
     
     
     
